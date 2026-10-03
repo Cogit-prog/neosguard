@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+data/*.db
+data/*.db-wal
+data/*.db-shm
+.venv/
+venv/
+.DS_Store
+
+# output corpora contain secret-format test fixtures (omitted from public repo)
+data/guard_output_corpus.json
+data/guard_output_holdout.json

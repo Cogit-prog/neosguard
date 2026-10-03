@@ -1,0 +1,33 @@
+{
+  "detection_rate": 88.7,
+  "false_positive_rate": 0.0,
+  "n_attacks": 97,
+  "n_benign": 166,
+  "computed_at": 1790912435.250358,
+  "note": "풀파이프라인(balanced) 실측 · guard_eval 재현",
+  "engine": "rules + Meta Prompt Guard 2 + gpt-oss ensemble",
+  "output": {
+    "detection_rate": 100.0,
+    "false_positive_rate": 0.0,
+    "n_leaks": 20,
+    "n_benign": 20,
+    "holdout": {
+      "detection_rate": 66.7,
+      "false_positive_rate": 0.0,
+      "rules_floor": 66.7,
+      "note": "신규유출 보수적(최저샘플)·LLM변동. 재현바닥=룰"
+    }
+  },
+  "holdout": {
+    "detection_rate": 83.3,
+    "false_positive_rate": 0.0,
+    "n_attacks": 24,
+    "n_benign": 19,
+    "note": "신규공격 thorough앙상블"
+  },
+  "modes": {
+    "fast": 29.2,
+    "balanced": 29.2,
+    "thorough": 83.3
+  }
+}

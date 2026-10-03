@@ -1,0 +1,333 @@
+{
+  "_note": "Groq 독립 생성 홀드아웃(탐지기 무관). 일반화 측정.",
+  "attacks": [
+    {
+      "name": "sess1",
+      "events": [
+        {
+          "action": "login",
+          "target": "user",
+          "content": "attempt1",
+          "risk": 1,
+          "t": 0.0
+        },
+        {
+          "action": "login",
+          "target": "user",
+          "content": "attempt2",
+          "risk": 1,
+          "t": 1.2
+        },
+        {
+          "action": "login",
+          "target": "user",
+          "content": "attempt3",
+          "risk": 1,
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "name": "sess2",
+      "events": [
+        {
+          "action": "read",
+          "target": "users",
+          "content": "list",
+          "risk": 1,
+          "t": 0.0
+        }
+      ]
+    },
+    {
+      "name": "sess3",
+      "events": [
+        {
+          "action": "read",
+          "target": "db",
+          "content": "sensitive",
+          "risk": 1,
+          "t": 0.0
+        },
+        {
+          "action": "transfer",
+          "target": "cloud",
+          "content": "dump",
+          "risk": 1,
+          "t": 1.5
+        }
+      ]
+    },
+    {
+      "name": "sess4",
+      "events": [
+        {
+          "action": "write",
+          "target": "config",
+          "content": "root",
+          "risk": 1,
+          "t": 0.0
+        },
+        {
+          "action": "execute",
+          "target": "script",
+          "content": "escalate",
+          "risk": 1,
+          "t": 1.0
+        }
+      ]
+    },
+    {
+      "name": "sess5",
+      "events": [
+        {
+          "action": "get",
+          "target": "api",
+          "content": "data",
+          "risk": 1,
+          "t": 0.0
+        },
+        {
+          "action": "read",
+          "target": "api",
+          "content": "info",
+          "risk": 1,
+          "t": 0.8
+        }
+      ]
+    },
+    {
+      "name": "sess6",
+      "events": [
+        {
+          "action": "read",
+          "target": "token",
+          "content": "sessid",
+          "risk": 1,
+          "t": 0.0
+        },
+        {
+          "action": "delete",
+          "target": "session",
+          "content": "sessid",
+          "risk": 1,
+          "t": 1.2
+        }
+      ]
+    }
+  ],
+  "benign": [
+    {
+      "name": "admin_panel",
+      "events": [
+        {
+          "action": "login",
+          "target": "user:admin",
+          "content": "admin login",
+          "risk": 0,
+          "t": 0.0
+        },
+        {
+          "action": "query",
+          "target": "dashboard",
+          "content": "load metrics",
+          "risk": 0,
+          "t": 2.5
+        },
+        {
+          "action": "write",
+          "target": "config:threshold",
+          "content": "set 80%",
+          "risk": 0,
+          "t": 5.3
+        },
+        {
+          "action": "logout",
+          "target": "user:admin",
+          "content": "session end",
+          "risk": 0,
+          "t": 7.8
+        }
+      ]
+    },
+    {
+      "name": "support_ticket",
+      "events": [
+        {
+          "action": "login",
+          "target": "user:agent",
+          "content": "agent login",
+          "risk": 0,
+          "t": 0.0
+        },
+        {
+          "action": "read",
+          "target": "ticket:12345",
+          "content": "view ticket",
+          "risk": 0,
+          "t": 1.2
+        },
+        {
+          "action": "write",
+          "target": "ticket:12345",
+          "content": "add note",
+          "risk": 0,
+          "t": 3.4
+        },
+        {
+          "action": "logout",
+          "target": "user:agent",
+          "content": "session end",
+          "risk": 0,
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "name": "data_pipeline",
+      "events": [
+        {
+          "action": "login",
+          "target": "svc:etl",
+          "content": "etl start",
+          "risk": 0,
+          "t": 0.0
+        },
+        {
+          "action": "execute",
+          "target": "pipeline:daily",
+          "content": "run job",
+          "risk": 0,
+          "t": 2.0
+        },
+        {
+          "action": "transfer",
+          "target": "storage:bucket",
+          "content": "upload logs",
+          "risk": 0,
+          "t": 4.7
+        },
+        {
+          "action": "logout",
+          "target": "svc:etl",
+          "content": "etl end",
+          "risk": 0,
+          "t": 6.1
+        }
+      ]
+    },
+    {
+      "name": "api_client",
+      "events": [
+        {
+          "action": "login",
+          "target": "app:clientA",
+          "content": "client auth",
+          "risk": 0,
+          "t": 0.0
+        },
+        {
+          "action": "query",
+          "target": "resource:users",
+          "content": "fetch users",
+          "risk": 0,
+          "t": 1.5
+        },
+        {
+          "action": "query",
+          "target": "resource:orders",
+          "content": "fetch orders",
+          "risk": 0,
+          "t": 3.0
+        },
+        {
+          "action": "logout",
+          "target": "app:clientA",
+          "content": "client logout",
+          "risk": 0,
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "name": "bulk_read",
+      "events": [
+        {
+          "action": "login",
+          "target": "user:researcher",
+          "content": "research login",
+          "risk": 0,
+          "t": 0.0
+        },
+        {
+          "action": "read",
+          "target": "doc:paper1",
+          "content": "view paper",
+          "risk": 0,
+          "t": 1.1
+        },
+        {
+          "action": "read",
+          "target": "doc:paper2",
+          "content": "view paper",
+          "risk": 0,
+          "t": 2.3
+        },
+        {
+          "action": "read",
+          "target": "doc:paper3",
+          "content": "view paper",
+          "risk": 0,
+          "t": 3.5
+        },
+        {
+          "action": "logout",
+          "target": "user:researcher",
+          "content": "session end",
+          "risk": 0,
+          "t": 4.7
+        }
+      ]
+    },
+    {
+      "name": "failed_login",
+      "events": [
+        {
+          "action": "login",
+          "target": "user:guest",
+          "content": "wrong pass",
+          "risk": 0,
+          "t": 0.0
+        },
+        {
+          "action": "login",
+          "target": "user:guest",
+          "content": "wrong pass",
+          "risk": 0,
+          "t": 0.8
+        },
+        {
+          "action": "login",
+          "target": "user:guest",
+          "content": "correct pass",
+          "risk": 0,
+          "t": 1.6
+        },
+        {
+          "action": "read",
+          "target": "page:home",
+          "content": "view home",
+          "risk": 0,
+          "t": 2.4
+        },
+        {
+          "action": "logout",
+          "target": "user:guest",
+          "content": "session end",
+          "risk": 0,
+          "t": 3.9
+        }
+      ]
+    }
+  ]
+}
