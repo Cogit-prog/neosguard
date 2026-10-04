@@ -13,6 +13,10 @@
 
 [**Live demo**](https://api.cogitapp.com/guard/demo) · [**Reproducible metrics**](https://api.cogitapp.com/guard/report) · [**OWASP coverage**](https://api.cogitapp.com/guard/owasp) · [**Self-evolution log**](https://api.cogitapp.com/guard/evolution)
 
+<img src="docs/demo.gif" alt="NEOS Guard detecting a Korean prompt injection (100, blocked) and a Korean ID leak (masked) in real time" width="760">
+
+<sub>Detecting a Korean prompt injection and a Korean PII leak in real time — multilingual, out of the box. [Try it live →](https://api.cogitapp.com/guard/demo)</sub>
+
 </div>
 
 ---
